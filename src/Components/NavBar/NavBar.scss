@@ -1,0 +1,72 @@
+// local variables
+$lineHeight: 60px;
+
+.navBar {
+  background: rgb(229, 250, 229);
+  padding: 0 15vw;
+
+  @media screen and (max-width: 1040px){
+    padding: 0 8vw;
+  }
+
+  @media screen and (max-width: 600px){
+    padding: 0 20px;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+
+    @media screen and (max-width:600px){
+      gap: 5px;
+    }
+  }
+
+  &__logo {
+    color: rgb(55, 55, 55);
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: $lineHeight;
+
+    @media screen and (max-width:1040px){
+      font-size: 20px;
+    }
+
+    @media screen and (max-width:600px){
+      font-size: 18px;
+    }
+
+    &-position {
+      margin-right: auto;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    padding:0 10px;
+    display: flex;
+  }
+
+  &__header {
+    color: rgb(82, 82, 82);
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: $lineHeight;
+
+    @media screen and (max-width:1040px){
+      font-size: 20px;
+    }
+
+    @media screen and (max-width:600px){
+      font-size: 18px;
+    }
+  }
+}
+
