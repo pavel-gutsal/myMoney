@@ -83,7 +83,7 @@ function Signup() {
           {!isPending && <button type="submit" className="login__btn">Signup</button>}
           {
             isPending && (
-              <button type="submit" className="login__btn" disabled>
+              <button type="submit" className="login__btn login__btn-noHover" disabled>
                 <ClipLoader color="rgb(49, 210, 154)" loading={isPending} size={25} />
               </button>
             )

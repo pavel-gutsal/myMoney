@@ -155,6 +155,15 @@ $greenMilky: rgb(49, 210, 154);
       border-radius: 5px;
       font-size: 16px;
     }
+
+    &-noHover {
+
+      &:hover,
+      &:focus {
+        color: $greenMilky;
+        background: white;
+      }
+    }
   }
 }
 

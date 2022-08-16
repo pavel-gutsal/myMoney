@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
+import ClipLoader from 'react-spinners/ClipLoader';
+import { useLogin } from '../../hooks/useLogin';
 import './Login.scss';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { login, error, isPending } = useLogin();
 
   const submitHandler = () => {
     if (email === '' || password === '') {
       // eslint-disable-next-line no-useless-return
       return;
     }
+
+    login(email, password);
 
     setEmail('');
     setPassword('');
@@ -56,8 +61,15 @@ function Login() {
           />
         </div>
         <div className="login__btn-position">
-          <button type="submit" className="login__btn">Login</button>
+          {!isPending
+            ? (<button type="submit" className="login__btn">Login</button>)
+            : (
+              <button type="submit" className="login__btn login__btn-noHover" disabled>
+                <ClipLoader color="rgb(49, 210, 154)" loading={isPending} size={25} />
+              </button>
+            )}
         </div>
+        { error && <p>{error}</p>}
       </form>
     </div>
   );
