@@ -165,5 +165,36 @@ $greenMilky: rgb(49, 210, 154);
       }
     }
   }
+
+  &__error {
+    width:100%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background: rgb(241, 241, 241);
+    border-radius: 10px;
+  }
+
+  &__errorMessage {
+    max-width:320px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color:rgb(255, 110, 126);
+    display: flex;
+
+    @media screen and (max-width:1040px) {
+      max-width:280px;
+    }
+
+    @media screen and (max-width:430px) {
+      max-width:260px;
+    }
+
+    @media screen and (max-width:340px) {
+      font-size: 14px;
+      max-width:200px;
+    }
+  }
 }
 

@@ -1,0 +1,69 @@
+// local variables
+$lineHeight: 60px;
+$greenMilky: rgb(49, 210, 154);
+
+.Logout{
+  position: relative;
+  padding: 10px;
+  min-width: 110px ;
+
+  &__userName {
+    color: $greenMilky;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  &__popup {
+    position: absolute;
+    top: 50px;
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $greenMilky;
+    border-radius: 10px;
+    width:100%;
+    min-width: 110px;
+    background: white;
+    padding-bottom: 10px;
+
+    @media screen and (max-width:600px) {
+      padding-bottom: 6px;
+    }
+
+    @media screen and (max-width:400px) {
+      width: 70%;
+      min-width: 90px;
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &__logout {
+    padding:10px 10px 3px;
+    color: $greenMilky;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    border: none;
+    border-bottom: 1px solid white;
+    background: white;
+    transition: all 0.5s ease-in-out;
+
+    @media screen and (max-width:600px) {
+      padding:6px 8px 3px;
+      font-size: 18px;
+    }
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      border-bottom: 1px solid $greenMilky;
+    }
+  }
+}

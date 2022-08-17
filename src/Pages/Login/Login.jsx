@@ -69,7 +69,11 @@ function Login() {
               </button>
             )}
         </div>
-        { error && <p>{error}</p>}
+        { error && (
+          <div className="login__error">
+            <p className="login__errorMessage">{error}</p>
+          </div>
+        )}
       </form>
     </div>
   );

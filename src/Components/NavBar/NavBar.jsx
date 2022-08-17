@@ -1,12 +1,11 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { useLogout } from '../../hooks/useLogout';
 import './NavBar.scss';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { Logout } from '../Logout/Logout';
 
 function NavBar() {
   const { user } = useAuthContext();
-  const { logout } = useLogout();
 
   return (
     <>
@@ -33,17 +32,7 @@ function NavBar() {
                     </li>
                   </>
                 ) : (
-                  <>
-                    <h2>{`Hello, ${user.displayName}`}</h2>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        logout();
-                      }}
-                    >
-                      Logout
-                    </button>
-                  </>
+                  <Logout user={user.displayName} />
                 )
             }
           </ul>
