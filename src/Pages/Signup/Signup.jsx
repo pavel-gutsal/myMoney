@@ -88,8 +88,12 @@ function Signup() {
               </button>
             )
           }
-          {error && <p>{error}</p>}
         </div>
+        { error && (
+          <div className="login__error">
+            <p className="login__errorMessage">{error}</p>
+          </div>
+        )}
       </form>
     </div>
   );

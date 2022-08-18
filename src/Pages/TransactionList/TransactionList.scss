@@ -1,0 +1,61 @@
+$greenMilky: rgb(49, 210, 154);
+
+.money {
+  padding-top: 40px;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &__item {
+    width:80%;
+    min-height:80px;
+    background: white;
+    border-left: 6px solid $greenMilky;
+    position: relative;
+    padding: 20px 60px 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 3px 10px 0 rgba(32, 32, 32, 0.3);
+  }
+
+  &__name {
+    font-family:'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: rgb(112, 112, 112);
+  }
+
+  &__amount {
+    font-family:'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: rgb(80, 80, 80);
+  }
+
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    outline: none;
+    border: none;
+    background: rgb(214, 214, 214);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+    }
+  }
+
+  &__btnImage {
+    width: 80%;
+    height: 80%
+  }
+}

@@ -1,9 +1,15 @@
 /* eslint-disable import/prefer-default-export */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useFireStore } from '../../hooks/useFireStore';
+import { useAuthContext } from '../../hooks/useAuthContext';
+import './TransactionForm.scss';
 
 export const TransactionForm = () => {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const { addDocument, response } = useFireStore('transactions');
+  const { user } = useAuthContext();
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -11,31 +17,37 @@ export const TransactionForm = () => {
       return;
     }
 
-    const newTransaction = {
+    addDocument({
+      uid: user.uid,
       name,
       amount,
-    };
-
-    console.log(newTransaction);
+    });
   };
+
+  useEffect(() => {
+    if (response.success) {
+      setName('');
+      setAmount('');
+    }
+  }, [response.success]);
 
   return (
     <>
-      <h1 className="Home__header">Add a transaction</h1>
+      <h1 className="form__header">Add a transaction</h1>
       <form
         onSubmit={(e) => { submitHandle(e); }}
-        className="Home__form"
+        className="form"
       >
-        <div className="Home__inputUnit">
+        <div className="form__inputUnit">
           <label
-            className="Home__label"
+            className="form__label"
             htmlFor="input-transaction-Name"
           >
             Transaction name:
           </label>
           <input
             type="text"
-            className="Home__input"
+            className="form__input"
             id="input-transaction-Name"
             onChange={(e) => {
               setName(e.target.value);
@@ -44,16 +56,16 @@ export const TransactionForm = () => {
           />
         </div>
 
-        <div className="Home__inputUnit">
+        <div className="form__inputUnit">
           <label
-            className="Home__label"
+            className="form__label"
             htmlFor="input-transaction-Amount"
           >
             Amount ($):
           </label>
           <input
             type="number"
-            className="Home__input"
+            className="form__input"
             id="input-transaction-Amount"
             onChange={(e) => {
               setAmount(e.target.value);
@@ -62,7 +74,7 @@ export const TransactionForm = () => {
           />
         </div>
         <button
-          className="Home__submitBtn"
+          className="form__submitBtn"
           type="submit"
         >
           Add Transaction
