@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
+import classNames from 'classnames';
+import { useDarkModeContext } from '../../hooks/useDarkModeContext';
 import { useLogin } from '../../hooks/useLogin';
 import './Login.scss';
 
@@ -7,6 +9,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, error, isPending } = useLogin();
+  const { dark } = useDarkModeContext();
 
   const submitHandler = () => {
     if (email === '' || password === '') {
@@ -21,22 +24,25 @@ function Login() {
   };
 
   return (
-    <div className="login">
+    <div className={classNames('login', { dark })}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           submitHandler();
         }}
-        className="login__form login__form-position"
+        className={classNames('login__form', 'login__form-position', { dark })}
       >
-        <h1 className="login__header">Login</h1>
+        <h1 className={classNames('login__header', { dark })}>Login</h1>
         <div className="login__input-position">
-          <label htmlFor="loginImail" className="login__label">
+          <label
+            htmlFor="loginImail"
+            className={classNames('login__label', { dark })}
+          >
             email:
           </label>
           <input
             type="email"
-            className="login__input"
+            className={classNames('login__input', { dark })}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -46,12 +52,15 @@ function Login() {
           />
         </div>
         <div className="login__input-position">
-          <label htmlFor="loginPassword" className="login__label">
+          <label
+            htmlFor="loginPassword"
+            className={classNames('login__label', { dark })}
+          >
             password:
           </label>
           <input
             type="password"
-            className="login__input"
+            className={classNames('login__input', { dark })}
             id="loginPassword"
             onChange={(e) => {
               setPassword(e.target.value);

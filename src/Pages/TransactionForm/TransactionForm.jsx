@@ -1,15 +1,18 @@
 /* eslint-disable import/prefer-default-export */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import classNames from 'classnames';
 import { useFireStore } from '../../hooks/useFireStore';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useDarkModeContext } from '../../hooks/useDarkModeContext';
 import './TransactionForm.scss';
 
 export const TransactionForm = () => {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   // eslint-disable-next-line no-unused-vars
-  const { addDocument, response } = useFireStore('transactions');
+  const { addDocument } = useFireStore('transactions');
   const { user } = useAuthContext();
+  const { dark } = useDarkModeContext();
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -22,21 +25,17 @@ export const TransactionForm = () => {
       name,
       amount,
     });
-  };
 
-  useEffect(() => {
-    if (response.success) {
-      setName('');
-      setAmount('');
-    }
-  }, [response.success]);
+    setName('');
+    setAmount('');
+  };
 
   return (
     <>
       <h1 className="form__header">Add a transaction</h1>
       <form
         onSubmit={(e) => { submitHandle(e); }}
-        className="form"
+        className={classNames('form', { dark })}
       >
         <div className="form__inputUnit">
           <label
@@ -47,7 +46,7 @@ export const TransactionForm = () => {
           </label>
           <input
             type="text"
-            className="form__input"
+            className={classNames('form__input', { dark })}
             id="input-transaction-Name"
             onChange={(e) => {
               setName(e.target.value);
@@ -65,7 +64,8 @@ export const TransactionForm = () => {
           </label>
           <input
             type="number"
-            className="form__input"
+            step="any"
+            className={classNames('form__input', { dark })}
             id="input-transaction-Amount"
             onChange={(e) => {
               setAmount(e.target.value);

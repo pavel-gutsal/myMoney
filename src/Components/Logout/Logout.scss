@@ -1,6 +1,7 @@
 // local variables
 $lineHeight: 60px;
 $greenMilky: rgb(49, 210, 154);
+$navBackground: rgb(37, 1, 67);
 
 .Logout{
   position: relative;
@@ -32,6 +33,10 @@ $greenMilky: rgb(49, 210, 154);
     background: white;
     padding-bottom: 10px;
 
+    &.dark {
+      background: $navBackground;
+    }
+
     @media screen and (max-width:600px) {
       padding-bottom: 6px;
     }
@@ -54,6 +59,11 @@ $greenMilky: rgb(49, 210, 154);
     border-bottom: 1px solid white;
     background: white;
     transition: all 0.5s ease-in-out;
+
+    &.dark {
+      background: $navBackground;
+      border-bottom: 1px solid $navBackground;
+    }
 
     @media screen and (max-width:600px) {
       padding:6px 8px 3px;

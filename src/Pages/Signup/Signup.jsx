@@ -1,6 +1,7 @@
 /*eslint-disable*/
-
 import React, { useState } from 'react';
+import classNames from 'classnames';
+import { useDarkModeContext } from '../../hooks/useDarkModeContext';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useSignup } from '../../hooks/useSignup';
 import '../Login/Login.scss';
@@ -11,6 +12,7 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
   const { signup, isPending, error } = useSignup();
+  const { dark } = useDarkModeContext();
 
   const submitHandler = () => {
     if (email === '' || password === '' || userName === '') {
@@ -25,22 +27,25 @@ function Signup() {
   };
 
   return (
-    <div className="login">
+    <div className={classNames('login', { dark })}>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           submitHandler();
         }}
-        className="login__form"
+        className={classNames('login__form', { dark })}
       >
-        <h1 className="login__header">Signup</h1>
+        <h1 className={classNames('login__header', { dark })}>Signup</h1>
         <div className="login__input-position">
-          <label htmlFor="signupImail" className="login__label">
+          <label
+            htmlFor="signupImail"
+            className={classNames('login__label', { dark })}
+          >
             email:
           </label>
           <input
             type="email"
-            className="login__input"
+            className={classNames('login__input', { dark })}
             onChange={(e) => {
               setEmail(e.target.value);
             }}
@@ -50,12 +55,15 @@ function Signup() {
           />
         </div>
         <div className="login__input-position">
-          <label htmlFor="signupPassword" className="login__label">
+          <label
+            htmlFor="signupPassword"
+            className={classNames('login__label', { dark })}
+          >
             password:
           </label>
           <input
             type="password"
-            className="login__input"
+            className={classNames('login__input', { dark })}
             id="signupPassword"
             onChange={(e) => {
               setPassword(e.target.value);
@@ -65,12 +73,15 @@ function Signup() {
           />
         </div>
         <div className="login__input-position">
-          <label htmlFor="signupName" className="login__label">
+          <label
+            htmlFor="signupName"
+            className={classNames('login__label', { dark })}
+          >
             user name:
           </label>
           <input
             type="text"
-            className="login__input"
+            className={classNames('login__input', { dark })}
             id="signupName"
             onChange={(e) => {
               setUserName(e.target.value);

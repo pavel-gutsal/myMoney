@@ -18,7 +18,6 @@ export const useCollection = (collection, userId) => {
     const unsubscribe = ref.onSnapshot((snapshot) => {
       const results = [];
       snapshot.docs.forEach((doc) => {
-        console.log(doc);
         results.push({ ...doc.data(), id: doc.id });
       });
       // update state

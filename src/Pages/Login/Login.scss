@@ -3,12 +3,17 @@
 // local variables
 $lineHeight: 60px;
 $greenMilky: rgb(49, 210, 154);
+$darkBackground: rgb(14, 3, 24);
 
 .login {
   display: flex;
   justify-content: center;
   align-items: center;
   height:calc(100vh - $lineHeight);
+
+  &.dark {
+    background: $darkBackground;
+  }
 
   &__form {
     padding: 20px;
@@ -17,6 +22,10 @@ $greenMilky: rgb(49, 210, 154);
     display: flex;
     flex-direction: column;
     gap:25px;
+
+    &.dark {
+      background: linear-gradient(300deg, rgba(51,31,56,1) 0%, rgba(33,45,66,1) 100%);
+    }
 
     @media screen and (max-width:1040px) {
       gap:20px;
@@ -43,6 +52,10 @@ $greenMilky: rgb(49, 210, 154);
     color: rgb(32, 32, 32);
     font-weight: 700;
 
+    &.dark {
+      color: $greenMilky;
+    }
+
     @media screen and (max-width:1040px) {
       font-size: 22px;
     }
@@ -65,6 +78,15 @@ $greenMilky: rgb(49, 210, 154);
     font-weight: 400;
     cursor: pointer;
     color: rgb(107, 107, 107);
+
+    &.dark {
+      color: rgb(176, 176, 176);
+
+      &:hover,
+      &:focus {
+        color: rgb(214, 214, 214);
+      }
+    }
 
     &:hover,
     &:focus {
@@ -91,6 +113,16 @@ $greenMilky: rgb(49, 210, 154);
     font-family: "Robote", Arial, Helvetica, sans-serif;
     font-weight: 400;
     transition: all 0.3s ease-in-out;
+
+    &.dark {
+      background: $darkBackground;
+      color: rgb(243, 243, 243);
+
+      &:hover,
+      &:focus {
+        background: rgb(61, 46, 86);
+      }
+    }
 
     &:hover,
     &:focus {

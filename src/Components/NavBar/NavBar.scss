@@ -1,10 +1,16 @@
 // local variables
 $lineHeight: 60px;
 $greenMilky: rgb(49, 210, 154);
+$navBackground: rgb(37, 1, 67);
 
 .navBar {
   background: rgb(229, 250, 229);
   padding: 0 15vw;
+  transition: background 0.4s ease-in-out;
+
+  &.dark{
+    background: $navBackground;
+  }
 
   @media screen and (max-width: 1040px){
     padding: 0 8vw;
@@ -36,6 +42,10 @@ $greenMilky: rgb(49, 210, 154);
     font-size: 24px;
     line-height: $lineHeight;
 
+    &.dark{
+      color: rgb(235, 235, 235);
+    }
+
     @media screen and (max-width:1040px){
       font-size: 20px;
     }
@@ -61,6 +71,10 @@ $greenMilky: rgb(49, 210, 154);
     font-size: 22px;
     font-weight: 500;
     line-height: $lineHeight;
+
+    &.dark {
+      color: $greenMilky;
+    }
 
     @media screen and (max-width:1040px){
       font-size: 20px;

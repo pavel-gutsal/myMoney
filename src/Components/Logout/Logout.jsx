@@ -1,7 +1,9 @@
 /* eslint-disable import/prefer-default-export */
 
 import React, { useState, useRef, useEffect } from 'react';
+import classNames from 'classnames';
 import { useLogout } from '../../hooks/useLogout';
+import { useDarkModeContext } from '../../hooks/useDarkModeContext';
 import './Logout.scss';
 
 // eslint-disable-next-line react/prop-types
@@ -9,6 +11,7 @@ export const Logout = ({ user }) => {
   const [modal, setModal] = useState(false);
   const { logout } = useLogout();
   const modalRef = useRef(null);
+  const { dark } = useDarkModeContext();
 
   useEffect(() => {
     const handler = (event) => {
@@ -37,10 +40,12 @@ export const Logout = ({ user }) => {
       </button>
       {
         modal && (
-          <div className="Logout__popup">
+          <div
+            className={classNames('Logout__popup', { dark })}
+          >
             <button
               type="button"
-              className="Logout__logout"
+              className={classNames('Logout__logout', { dark })}
               onClick={() => {
                 logout();
                 setModal(false);
